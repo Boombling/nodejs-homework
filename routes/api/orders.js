@@ -10,6 +10,6 @@ const orderValidationMiddleware = validation(joiSchema);
 
 router.get("/", controllerWrapper(authenticate), ctrl.getAll);
 
-router.post("/", controllerWrapper(authenticate), orderValidationMiddleware(ctrl.add));
+router.post("/", controllerWrapper(authenticate), orderValidationMiddleware, controllerWrapper(ctrl.add));
 
 module.exports = router;
