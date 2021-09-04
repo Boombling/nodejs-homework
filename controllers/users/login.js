@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { BadRequest } = require("http-errors");
+const { Unauthorized } = require("http-errors");
 
 const { User } = require("../../models");
 
@@ -33,6 +33,6 @@ const login = async (req, res) => {
         }
     }
 
-    throw new BadRequest("Email or password is wrong")
+    throw new Unauthorized("Email or password is wrong")
 }
 module.exports = login;

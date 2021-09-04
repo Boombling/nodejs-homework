@@ -19,4 +19,7 @@ const joiSchema = Joi.object({
 
 const Order = model("order", orderSchema);
 
-module.exports = Order;
+module.exports = {
+    Order,
+    joiSchema
+};

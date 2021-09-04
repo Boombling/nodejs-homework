@@ -23,10 +23,6 @@ const userSchema = Schema({
     token: {
         type: String,
         default: null,
-    },
-    owner: {
-        type: SchemaTypes.ObjectId,
-        ref: 'user',
     }
 }, { versionKey: false, timestamps: true });
 
@@ -38,7 +34,7 @@ userSchema.methods.comparePassword = function (password) {
 }
 
 const joiSchema = Joi.object({
-    password: Joi.string.min(6).required(),
+    password: Joi.string().min(6).required(),
     email: Joi.string().pattern(emailReg).required()
 })
 
