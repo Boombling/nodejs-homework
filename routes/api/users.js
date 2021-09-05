@@ -8,10 +8,10 @@ const router = express.Router();
 
 const userValidationMiddleware = validation(joiSchema);
 
-router.post("/register", userValidationMiddleware, controllerWrapper(ctrl.register));
+router.post("/signup", userValidationMiddleware, controllerWrapper(ctrl.signup));
 
 router.post("/login", userValidationMiddleware, controllerWrapper(ctrl.login));
 
-router.get("/logout", controllerWrapper(ctrl.logout));
+router.get("/logout", controllerWrapper(authenticate), controllerWrapper(ctrl.logout));
 
 module.exports = router;
