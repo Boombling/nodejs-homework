@@ -14,6 +14,6 @@ router.post("/login", userValidationMiddleware, controllerWrapper(ctrl.login));
 
 router.get("/logout", controllerWrapper(authenticate), controllerWrapper(ctrl.logout));
 
-router.patch("/avatars/:id", upload.single("avatarURL"), controllerWrapper(ctrl.updateAvatar));
+router.patch("/avatar/:id", upload.single("avatar"), controllerWrapper(ctrl.updateAvatar));
 
 module.exports = router;
