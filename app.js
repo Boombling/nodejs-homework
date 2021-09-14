@@ -2,8 +2,7 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 
-// const contactsRouter = require('./routes/api/contacts');
-const { contactsRouter, usersRouter, ordersRouter, avatarsRouter } = require('./routes/api');
+const { contactsRouter, usersRouter, ordersRouter } = require('./routes/api');
 
 const app = express()
 
@@ -17,7 +16,6 @@ app.use(express.static("public"))
 app.use('/api/contacts', contactsRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/orders', ordersRouter);
-// app.use('/api/avatars', avatarsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' })
