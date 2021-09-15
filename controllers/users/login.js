@@ -17,7 +17,9 @@ const login = async (req, res) => {
       };
       const token = jwt.sign(payload, SECRET_KEY);
       await User.findByIdAndUpdate(user._id, { token });
-
+    if(!user.verify){
+        throw new BadRequest("Email не подтвержден");
+    }  
       return res.status(200).json({
         status: "OK",
         code: 200,
