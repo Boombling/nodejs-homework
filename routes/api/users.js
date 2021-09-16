@@ -16,6 +16,6 @@ router.get("/logout", controllerWrapper(authenticate), controllerWrapper(ctrl.lo
 
 router.patch("/avatar/:id", upload.single("avatar"), controllerWrapper(ctrl.updateAvatar));
 
-router.get("/verify/:verificationToken", controllerWrapper(ctrl.verify));
+router.get("/verify/:verifyToken", controllerWrapper(ctrl.verify));
 
 module.exports = router;

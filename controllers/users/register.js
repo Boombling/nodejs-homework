@@ -20,7 +20,6 @@ const signup = async (req, res) => {
     const newUser = new User({
         email,
         avatarURL: `${defaultAvatar}`,
-        // verificationToke: `${verificationToke}`
     })
     newUser.createVerifyToken();
     newUser.setPassword(password);
@@ -30,11 +29,11 @@ const signup = async (req, res) => {
     
     await newUser.save();
 
-    const { verificationToke } = newUser;
+    const { verifyToken } = newUser;
     const data = {
         to: email,
         subject: "registration",
-        html:`<a href="http://localhost:3000/api/users/verify/${verificationToke}">Подтвердите регистрацию</a>`
+        html:`<a href="http://localhost:3000/api/users/verify/${verifyToken}">Confirm registration</a>`
     }
     
     await sendMail(data);
@@ -43,7 +42,6 @@ const signup = async (req, res) => {
         status: "success",
         code: 201,
         message: "Success register",
-        html:`<a href="http://localhost:3000/api/users/verify/${verificationToke}">Подтвердите регистрацию</a>`
     })
 };
 
